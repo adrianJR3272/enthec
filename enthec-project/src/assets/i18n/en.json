@@ -1,3 +1,4 @@
+
 {
   "SEARCH": {
     "PLACEHOLDER": "Search user...",
@@ -10,8 +11,14 @@
     "DESCRIPTION_NONE": "No description",
     "LANGUAGE": "Language",
     "VIEW_ON_GITHUB": "View on GitHub",
-    "PAGINATION_PREV": "Prev",
+    "PAGINATION_PREV": "Previous",
     "PAGINATION_NEXT": "Next",
-    "PAGE": "Page"
+    "PAGE": "Page",
+    "SEARCH_PLACEHOLDER": "Search repository...",
+    "SORT_NAME": "Sort by name",
+    "SORT_STARS": "Sort by stars",
+    "ASC": "Ascending",
+    "DESC": "Descending",
+    "ALL_LANGUAGES": "All languages"
   }
 }

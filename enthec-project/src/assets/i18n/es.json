@@ -1,3 +1,4 @@
+
 {
   "SEARCH": {
     "PLACEHOLDER": "Buscar usuario...",
@@ -12,6 +13,12 @@
     "VIEW_ON_GITHUB": "Ver en GitHub",
     "PAGINATION_PREV": "Anterior",
     "PAGINATION_NEXT": "Siguiente",
-    "PAGE": "Página"
+    "PAGE": "Página",
+    "SEARCH_PLACEHOLDER": "Buscar repositorio...",
+    "SORT_NAME": "Ordenar por nombre",
+    "SORT_STARS": "Ordenar por estrellas",
+    "ASC": "Ascendente",
+    "DESC": "Descendente",
+    "ALL_LANGUAGES": "Todos los lenguajes"
   }
 }
