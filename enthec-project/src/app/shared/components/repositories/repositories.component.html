@@ -1,0 +1,30 @@
+<div
+  class="repositories-grid"
+  [ngClass]="{
+    'slide-next': pageDirection() === 'next',
+    'slide-prev': pageDirection() === 'prev'
+  }"
+>
+  <div class="repo-card" *ngFor="let repo of paginatedRepos()">
+    <h3>{{ repo.name }}</h3>
+    <p>{{ repo.description || "Sin descripción" }}</p>
+    <p>Lenguaje: {{ repo.language || "N/A" }}</p>
+    <p>⭐ {{ repo.stargazers_count }}</p>
+    <a href="{{ repo.html_url }}" target="_blank">{{
+      "REPOSITORIES.VIEW_ON_GITHUB" | translate
+    }}</a>
+  </div>
+</div>
+
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage() === 1">
+    {{ "REPOSITORIES.PAGINATION_PREV" | translate }}
+  </button>
+  <span>
+    {{ "REPOSITORIES.PAGE" | translate }} {{ currentPage() }} /
+    {{ totalPages() }}
+  </span>
+  <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+    {{ "REPOSITORIES.PAGINATION_NEXT" | translate }}
+  </button>
+</div>

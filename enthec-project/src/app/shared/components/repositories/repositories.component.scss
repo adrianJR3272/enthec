@@ -1,0 +1,148 @@
+.repositories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  transition: transform 0.5s ease;
+  font-family: 'Inter', sans-serif; 
+  
+  &.slide-next {
+    animation: slideNext 0.5s forwards;
+  }
+
+  &.slide-prev {
+    animation: slidePrev 0.5s forwards;
+  }
+}
+
+@keyframes slideNext {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slidePrev {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.repo-card {
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--repo-card-bg);
+  color: var(--repo-card-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  min-height: 15rem;
+  max-height: 15rem;      
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.3s ease;
+
+  h3 {
+    color: blue;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .description {
+    flex: 1;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+  }
+
+  a {
+  display: inline; 
+  margin-top: auto; 
+  color: #0b3d91;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer; 
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+   
+  
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #0b3d91; 
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #06276b; 
+    box-shadow: 0 0 6px rgba(6, 39, 107, 0.7);
+  }
+}
+
+.pagination {
+  font-family: 'Inter', sans-serif; 
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  span {
+    display: flex;         
+    align-items: center;     
+    justify-content: center;
+    font-weight: 500;
+    color: var(--repo-card-color);
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--repo-card-bg);
+    color: var(--repo-card-color);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.2s;
+
+    &:hover:not(:disabled) {
+      background-color: #0b3d91;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

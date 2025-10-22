@@ -8,7 +8,8 @@ export class ThemeService {
   public isDarkMode: boolean;
 
   constructor() {
-    this.isDarkMode = JSON.parse(localStorage.getItem(this.darkModeKey) || 'false');
+    const saved = localStorage.getItem(this.darkModeKey);
+    this.isDarkMode = saved !== null ? JSON.parse(saved) : true;
     this.applyTheme();
   }
 
@@ -19,7 +20,6 @@ export class ThemeService {
   }
 
   private applyTheme(): void {
-    const themeClass = this.isDarkMode ? 'dark' : 'light';
     document.body.classList.toggle('dark', this.isDarkMode);
     document.body.classList.toggle('light', !this.isDarkMode);
   }

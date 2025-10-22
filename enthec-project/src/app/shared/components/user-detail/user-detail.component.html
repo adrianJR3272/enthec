@@ -1,0 +1,17 @@
+<section class="user-detail-component">
+  <div class="cabecera">
+    <div class="avatar">
+      <img src="{{ user.avatar_url }}" />
+    </div>
+    <div class="user">
+      {{ user.login }}
+      @if (user.bio) {
+        <div class="description"></div>
+      }
+    </div>
+  </div>
+
+  <div class="repositories-container">
+    <app-repositories [userName]="user.login"></app-repositories>
+  </div>
+</section>

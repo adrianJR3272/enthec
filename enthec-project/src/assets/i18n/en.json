@@ -5,5 +5,13 @@
     "ERROR": "Please enter a username to search.",
     "USER_NOT_FOUND": "User not found",
     "SEARCH_SUCCESS": "Search completed successfully"
+  },
+  "REPOSITORIES": {
+    "DESCRIPTION_NONE": "No description",
+    "LANGUAGE": "Language",
+    "VIEW_ON_GITHUB": "View on GitHub",
+    "PAGINATION_PREV": "Prev",
+    "PAGINATION_NEXT": "Next",
+    "PAGE": "Page"
   }
 }

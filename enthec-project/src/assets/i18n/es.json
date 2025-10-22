@@ -5,5 +5,13 @@
     "ERROR": "Por favor, ingresa un nombre de usuario para buscar.",
     "USER_NOT_FOUND": "Usuario no encontrado",
     "SEARCH_SUCCESS": "Búsqueda realizada con éxito"
+  },
+  "REPOSITORIES": {
+    "DESCRIPTION_NONE": "Sin descripción",
+    "LANGUAGE": "Lenguaje",
+    "VIEW_ON_GITHUB": "Ver en GitHub",
+    "PAGINATION_PREV": "Anterior",
+    "PAGINATION_NEXT": "Siguiente",
+    "PAGE": "Página"
   }
 }
