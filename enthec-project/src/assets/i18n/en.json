@@ -5,7 +5,9 @@
     "BUTTON": "Search",
     "ERROR": "Please enter a username to search.",
     "USER_NOT_FOUND": "User not found",
-    "SEARCH_SUCCESS": "Search completed successfully"
+    "SEARCH_SUCCESS": "Search completed successfully",
+    "BACK_TO_SEARCH": "Back to search"
+    
   },
   "REPOSITORIES": {
     "DESCRIPTION_NONE": "No description",

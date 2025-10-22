@@ -32,8 +32,7 @@ export class RepositoriesComponent implements OnChanges {
   starsOrderValue: 'asc' | 'desc' = 'asc';
   sortBy = signal<'name' | 'stars'>('name');
   order = signal<'asc' | 'desc'>('asc');
-languageFilterValue: 'all' | string = 'all';
-
+  languageFilterValue: 'all' | string = 'all';
   languages: string[] = [];
 
   private reposService = inject(RepositoriesService);

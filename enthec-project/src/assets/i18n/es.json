@@ -5,7 +5,9 @@
     "BUTTON": "Buscar",
     "ERROR": "Por favor, ingresa un nombre de usuario para buscar.",
     "USER_NOT_FOUND": "Usuario no encontrado",
-    "SEARCH_SUCCESS": "Búsqueda realizada con éxito"
+    "SEARCH_SUCCESS": "Búsqueda realizada con éxito",
+    "BACK_TO_SEARCH": "Volver al buscador"
+
   },
   "REPOSITORIES": {
     "DESCRIPTION_NONE": "Sin descripción",

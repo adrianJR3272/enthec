@@ -163,15 +163,12 @@
     background-color: var(--repo-card-bg);
     color: var(--repo-card-color);
 
-    &:hover {
-      transform: translateY(-1px);
-      background-color: rgba(11, 61, 145, 0.1);
-    }
 
-    &:focus {
-      outline: 2px solid #0b3d91;
-      outline-offset: 2px;
+    option:hover{
+    cursor: pointer;
+
     }
+    
   }
 
   input {
