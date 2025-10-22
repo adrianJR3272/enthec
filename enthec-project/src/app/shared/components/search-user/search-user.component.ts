@@ -1,42 +1,48 @@
-import { CommonModule } from "@angular/common";
-import { Component, inject, OnInit, signal } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { SearchUserService } from './search-user.service';
+import { ToastComponent } from '../../toast/toast.component';
 
 @Component({
-  selector: "app-search-user",
-  templateUrl: "./search-user.component.html",
-  styleUrls: ["./search-user.component.scss"],
-  imports: [ReactiveFormsModule,CommonModule],
+  selector: 'app-search-user',
+  templateUrl: './search-user.component.html',
+  styleUrls: ['./search-user.component.scss'],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule, ToastComponent],
   standalone: true
 })
 export class SearchUserComponent implements OnInit {
   searchForm!: FormGroup;
   fb = inject(FormBuilder);
-  router = inject(Router);
-  errorMessage: string | null = null;    
-  required = signal(false)
-
-  constructor() { }
+  searchUserService = inject(SearchUserService);
+  required = signal(false);
+  userData = signal<any>(null);
 
   ngOnInit() {
     this.initForm();
   }
 
+  initForm() {
+    this.searchForm = this.fb.group({
+      username: ['', Validators.required],
+    });
+  }
+
   onSearch() {
     const username = this.searchForm.get('username')?.value?.trim();
     if (!username) {
-      this.required.set(true)
-      this.errorMessage = "Por favor escribe un nombre de usuario para buscar.";
+      this.required.set(true);
+      this.userData.set(null);
       return;
     }
-    this.required.set(false)
-    this.router.navigate(['/user', username]);
-  }
 
-  initForm() {
-    this.searchForm = this.fb.group({
-      username: ['', Validators.required]
+    this.required.set(false);
+    this.userData.set(null);
+
+    this.searchUserService.getUser(username).subscribe({
+      next: (data) => this.userData.set(data),
+      error: () => this.userData.set(null) 
     });
   }
 }

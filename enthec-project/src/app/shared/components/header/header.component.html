@@ -1,6 +1,26 @@
 <header class="app-header">
+  <div class="language-selector">
+      <img
+      [src]="spanishFlag"
+      alt="Español"
+      class="flag-icon"
+      (click)="changeLanguage('es')"
+    />
+    <img
+      [src]="englishFlag"
+      alt="English"
+      class="flag-icon"
+      (click)="changeLanguage('en')"
+    />
+  </div>
+  
   <div class="toggle-container">
-    <input type="checkbox" id="theme-toggle" (change)="toggleDarkMode()" [checked]="themeService.isDarkMode">
+    <input
+      type="checkbox"
+      id="theme-toggle"
+      (change)="toggleDarkMode()"
+      [checked]="themeService.isDarkMode"
+    />
     <label for="theme-toggle" class="toggle-label">
       <span class="toggle-circle">
         <span class="material-symbols-outlined sun-icon">light_mode</span>

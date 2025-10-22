@@ -3,9 +3,8 @@
   justify-content: flex-end;
   padding: 10px;
   background-color: var(--header-bg);
-}
 
-.toggle-container {
+  .toggle-container {
   position: relative;
 }
 
@@ -68,3 +67,27 @@
 #theme-toggle:checked + .toggle-label .moon-icon {
   opacity: 0;
 }
+
+.language-selector {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.flag-icon {
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.flag-icon:hover {
+  transform: scale(1.1);
+}
+
+}
+

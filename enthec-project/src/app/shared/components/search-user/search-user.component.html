@@ -1,21 +1,37 @@
 <section class="search-user-component">
   <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
     <div class="image">
-      <span class="material-symbols-outlined user-icon" (click)="onSearch()">person_search</span>
+      <span class="material-symbols-outlined user-icon" (click)="onSearch()">
+        person_search
+      </span>
     </div>
 
     <div class="input-container">
       <input
         type="text"
         formControlName="username"
-        placeholder="Buscar usuario…"
+        [placeholder]="'SEARCH.PLACEHOLDER' | translate"
         class="user-search-input"
       />
-      <button type="submit" class="search-button">Buscar</button>
+      <button type="submit" class="search-button">
+        {{ "SEARCH.BUTTON" | translate }}
+      </button>
     </div>
 
-    @if (required() && searchForm.controls['username'].invalid) {
-      <div class="error-message">Por favor escribe un nombre de usuario para buscar.</div>
+    @if (
+      searchForm.controls["username"].touched &&
+      searchForm.controls["username"].invalid
+    ) {
+      <div class="error-message">
+        {{ "SEARCH.ERROR" | translate }}
+      </div>
     }
   </form>
+
+  @if (searchUserService.toast()) {
+    <app-toast
+      [message]="searchUserService.toast()?.message"
+      [type]="searchUserService.toast()?.type"
+    ></app-toast>
+  }
 </section>
