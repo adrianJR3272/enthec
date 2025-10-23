@@ -1,4 +1,3 @@
-
 {
   "SEARCH": {
     "PLACEHOLDER": "Search user...",
@@ -7,7 +6,6 @@
     "USER_NOT_FOUND": "User not found",
     "SEARCH_SUCCESS": "Search completed successfully",
     "BACK_TO_SEARCH": "Back to search"
-    
   },
   "REPOSITORIES": {
     "DESCRIPTION_NONE": "No description",
@@ -21,6 +19,11 @@
     "SORT_STARS": "Sort by stars",
     "ASC": "Ascending",
     "DESC": "Descending",
-    "ALL_LANGUAGES": "All languages"
+    "NAME_ASC": "Sort by name ascending",
+    "NAME_DESC": "Sort by name descending",
+    "STARS_ASC": "Sort by stars ascending",
+    "STARS_DESC": "Sort by stars descending",
+    "ALL_LANGUAGES": "All languages",
+    "NO_REPOS_FOUND": "No repositories found"
   }
 }

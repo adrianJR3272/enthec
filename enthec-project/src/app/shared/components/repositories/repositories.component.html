@@ -4,52 +4,48 @@
       type="text"
       placeholder="{{ 'REPOSITORIES.SEARCH_PLACEHOLDER' | translate }}"
       [(ngModel)]="searchQueryValue"
+      (ngModelChange)="onSearchChange()"
     />
 
     <select [(ngModel)]="nameOrderValue">
-      <option value="asc">{{ "REPOSITORIES.ASC" | translate }}</option>
-      <option value="desc">{{ "REPOSITORIES.DESC" | translate }}</option>
+      <option value="asc">{{ "REPOSITORIES.NAME_ASC" | translate }}</option>
+      <option value="desc">{{ "REPOSITORIES.NAME_DESC" | translate }}</option>
     </select>
 
     <select [(ngModel)]="starsOrderValue">
-      <option value="asc">{{ "REPOSITORIES.ASC" | translate }}</option>
-      <option value="desc">{{ "REPOSITORIES.DESC" | translate }}</option>
+      <option value="asc">{{ "REPOSITORIES.STARS_ASC" | translate }}</option>
+      <option value="desc">{{ "REPOSITORIES.STARS_DESC" | translate }}</option>
     </select>
 
     <select [(ngModel)]="languageFilterValue">
-      <option value="all">
-        {{ "REPOSITORIES.ALL_LANGUAGES" | translate }}
-      </option>
+      <option value="all">{{ "REPOSITORIES.ALL_LANGUAGES" | translate }}</option>
       <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
     </select>
   </div>
 
-  <div
-    class="repositories-grid"
-    [ngClass]="{
-      'slide-next': pageDirection() === 'next',
-      'slide-prev': pageDirection() === 'prev'
-    }"
-  >
-    <div class="repo-card" *ngFor="let repo of paginatedRepos()">
-      <h3>{{ repo.name }}</h3>
-      <p>{{ repo.description || "Sin descripción" }}</p>
-      <p>Lenguaje: {{ repo.language || "N/A" }}</p>
-      <p>⭐ {{ repo.stargazers_count }}</p>
-      <a [href]="repo.html_url" target="_blank">{{
-        "REPOSITORIES.VIEW_ON_GITHUB" | translate
-      }}</a>
+  <div *ngIf="paginatedRepos().length > 0; else noResults">
+    <div class="repositories-grid" [ngClass]="animationClass">
+      <div class="repo-card" *ngFor="let repo of paginatedRepos()">
+        <h3>{{ repo.name }}</h3>
+        <p>{{ repo.description || "Sin descripción" }}</p>
+        <p>Lenguaje: {{ repo.language || "N/A" }}</p>
+        <p>⭐ {{ repo.stargazers_count }}</p>
+        <a [href]="repo.html_url" target="_blank">{{ "REPOSITORIES.VIEW_ON_GITHUB" | translate }}</a>
+      </div>
     </div>
   </div>
 
-  <div class="pagination">
+  <ng-template #noResults>
+    <div class="no-results">
+      {{ "REPOSITORIES.NO_REPOS_FOUND" | translate}}
+    </div>
+  </ng-template>
+
+  <div class="pagination" *ngIf="paginatedRepos().length > 0">
     <button (click)="prevPage()" [disabled]="currentPage() === 1">
       {{ "REPOSITORIES.PAGINATION_PREV" | translate }}
     </button>
-    <span>
-      {{ "REPOSITORIES.PAGE" | translate }} {{ currentPage() }} /
-      {{ totalPages() }}
-    </span>
+    <span>{{ "REPOSITORIES.PAGE" | translate }} {{ currentPage() }} / {{ totalPages() }}</span>
     <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">
       {{ "REPOSITORIES.PAGINATION_NEXT" | translate }}
     </button>

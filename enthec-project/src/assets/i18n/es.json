@@ -1,4 +1,3 @@
-
 {
   "SEARCH": {
     "PLACEHOLDER": "Buscar usuario...",
@@ -7,7 +6,6 @@
     "USER_NOT_FOUND": "Usuario no encontrado",
     "SEARCH_SUCCESS": "Búsqueda realizada con éxito",
     "BACK_TO_SEARCH": "Volver al buscador"
-
   },
   "REPOSITORIES": {
     "DESCRIPTION_NONE": "Sin descripción",
@@ -21,6 +19,11 @@
     "SORT_STARS": "Ordenar por estrellas",
     "ASC": "Ascendente",
     "DESC": "Descendente",
-    "ALL_LANGUAGES": "Todos los lenguajes"
+    "NAME_ASC": "Ordenar por nombre ascendente",
+    "NAME_DESC": "Ordenar por nombre descendente",
+    "STARS_ASC": "Ordenar por estrellas ascendente",
+    "STARS_DESC": "Ordenar por estrellas descendente",
+    "ALL_LANGUAGES": "Todos los lenguajes",
+    "NO_REPOS_FOUND": "No se han encontrado repositorios"
   }
 }

@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RepositoriesService } from './repositories.service';
-import { Repositories } from '../../interfaces/repositories';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { Repositories } from '../../interfaces/Repositories';
 
 @Component({
   selector: 'app-repositories',
@@ -34,6 +34,7 @@ export class RepositoriesComponent implements OnChanges {
   order = signal<'asc' | 'desc'>('asc');
   languageFilterValue: 'all' | string = 'all';
   languages: string[] = [];
+  animationClass: 'slide-next' | 'slide-prev' | '' = '';
 
   private reposService = inject(RepositoriesService);
 
@@ -41,6 +42,10 @@ export class RepositoriesComponent implements OnChanges {
     if (changes['userName'] && this.userName) {
       this.loadRepositories(this.userName);
     }
+  }
+
+  onSearchChange() {
+    this.currentPage.set(1);
   }
 
   loadRepositories(username: string) {
@@ -65,38 +70,37 @@ export class RepositoriesComponent implements OnChanges {
     this.languages = Array.from(new Set(langs));
   }
 
- filteredRepos() {
-  let repos = [...this.repositories];
+  filteredRepos() {
+    let repos = [...this.repositories];
 
-  if (this.searchQueryValue) {
-    repos = repos.filter(r =>
-      r.name.toLowerCase().includes(this.searchQueryValue.toLowerCase())
-    );
+    if (this.searchQueryValue) {
+      repos = repos.filter((r) =>
+        r.name.toLowerCase().includes(this.searchQueryValue.toLowerCase()),
+      );
+    }
+
+    if (this.languageFilterValue !== 'all') {
+      repos = repos.filter((r) => r.language === this.languageFilterValue);
+    }
+
+    if (this.nameOrderValue) {
+      repos.sort((a, b) =>
+        this.nameOrderValue === 'asc'
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name),
+      );
+    }
+
+    if (this.starsOrderValue) {
+      repos.sort((a, b) =>
+        this.starsOrderValue === 'asc'
+          ? a.stargazers_count - b.stargazers_count
+          : b.stargazers_count - a.stargazers_count,
+      );
+    }
+
+    return repos;
   }
-
-  if (this.languageFilterValue !== 'all') {
-    repos = repos.filter(r => r.language === this.languageFilterValue);
-  }
-
-  if (this.nameOrderValue) {
-    repos.sort((a, b) =>
-      this.nameOrderValue === 'asc'
-        ? a.name.localeCompare(b.name)
-        : b.name.localeCompare(a.name)
-    );
-  }
-
-  if (this.starsOrderValue) {
-    repos.sort((a, b) =>
-      this.starsOrderValue === 'asc'
-        ? a.stargazers_count - b.stargazers_count
-        : b.stargazers_count - a.stargazers_count
-    );
-  }
-
-  return repos;
-}
-
 
   paginatedRepos() {
     const start = (this.currentPage() - 1) * this.pageSize;
@@ -106,18 +110,25 @@ export class RepositoriesComponent implements OnChanges {
   totalPages() {
     return Math.ceil(this.filteredRepos().length / this.pageSize);
   }
-
   nextPage() {
     if (this.currentPage() < this.totalPages()) {
-      this.pageDirection.set('next');
-      this.currentPage.set(this.currentPage() + 1);
+      this.triggerAnimation('next');
+      this.currentPage.update((n) => n + 1);
     }
   }
 
   prevPage() {
     if (this.currentPage() > 1) {
-      this.pageDirection.set('prev');
-      this.currentPage.set(this.currentPage() - 1);
+      this.triggerAnimation('prev');
+      this.currentPage.update((n) => n - 1);
     }
+  }
+
+  triggerAnimation(direction: 'next' | 'prev') {
+    this.animationClass = direction === 'next' ? 'slide-next' : 'slide-prev';
+
+    setTimeout(() => {
+      this.animationClass = '';
+    }, 500);
   }
 }

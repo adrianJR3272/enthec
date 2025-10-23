@@ -1,12 +1,11 @@
-
 .repositories-grid {
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   transition: transform 0.5s ease;
-  font-family: 'Inter', sans-serif; 
-  
+  font-family: "Inter", sans-serif;
+
   &.slide-next {
     animation: slideNext 0.5s forwards;
   }
@@ -46,9 +45,9 @@
   justify-content: flex-start;
   background-color: var(--repo-card-bg);
   color: var(--repo-card-color);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   min-height: 15rem;
-  max-height: 15rem;      
+  max-height: 15rem;
   overflow-y: auto;
   overflow-x: hidden;
   transition: transform 0.3s ease;
@@ -72,17 +71,17 @@
   }
 
   a {
-  display: inline; 
-  margin-top: auto; 
-  color: #0b3d91;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer; 
+    display: inline;
+    margin-top: auto;
+    color: #0b3d91;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
 
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -93,20 +92,22 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #0b3d91; 
+    background-color: #0b3d91;
     border-radius: 4px;
-    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.2s ease;
     cursor: pointer;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #06276b; 
+    background-color: #06276b;
     box-shadow: 0 0 6px rgba(6, 39, 107, 0.7);
   }
 }
 
 .pagination {
-  font-family: 'Inter', sans-serif; 
+  font-family: "Inter", sans-serif;
   grid-column: 1 / -1;
   display: flex;
   justify-content: center;
@@ -115,8 +116,8 @@
   margin-top: 2rem;
 
   span {
-    display: flex;         
-    align-items: center;     
+    display: flex;
+    align-items: center;
     justify-content: center;
     font-weight: 500;
   }
@@ -125,11 +126,13 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: none;
-    
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.2s, transform 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
 
     &:hover:not(:disabled) {
       background-color: #0b3d91;
@@ -144,7 +147,6 @@
   }
 }
 
-
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -156,19 +158,19 @@
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     border: none;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.2s,
+      color 0.2s;
     background-color: var(--repo-card-bg);
     color: var(--repo-card-color);
 
-
-    option:hover{
-    cursor: pointer;
-
+    option:hover {
+      cursor: pointer;
     }
-    
   }
 
   input {
@@ -192,4 +194,25 @@
   }
 }
 
+.no-results {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;      
+  font-weight: 500;
+  text-align: center;      
+  padding: 2rem 1rem;  
+  padding-top: 3rem; 
+  color: var(--repo-card-color);
+}
 
+
+@media (max-width: 756px) {
+  .repositories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .repositories-grid {
+    grid-template-columns: 1fr;
+  }
+}
