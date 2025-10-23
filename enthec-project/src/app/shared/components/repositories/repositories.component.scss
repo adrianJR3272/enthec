@@ -196,20 +196,38 @@
 
 .no-results {
   font-family: "Inter", sans-serif;
-  font-size: 2rem;      
+  font-size: 2rem;
   font-weight: 500;
-  text-align: center;      
-  padding: 2rem 1rem;  
-  padding-top: 3rem; 
+  text-align: center;
+  padding: 2rem 1rem;
+  padding-top: 3rem;
   color: var(--repo-card-color);
 }
-
 
 @media (max-width: 756px) {
   .repositories-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 1rem;
+    padding: 0 1rem; 
+    box-sizing: border-box;
+  }
+
+  .filters input,
+  .filters select {
+    display: block;
+    width: 100%;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+  }
 }
+
 
 @media (max-width: 500px) {
   .repositories-grid {
