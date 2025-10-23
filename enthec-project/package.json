@@ -1,13 +1,15 @@
 {
   "name": "enthec-project",
   "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+ "scripts": {
+  "ng": "ng",
+  "start": "ng serve",
+  "build": "ng build --configuration production --base-href /enthec/",
+  "postbuild": "copy 404.html dist/enthec-project/404.html",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test",
+  "deploy": "npm run build && npx ngh --dir=dist/enthec-project"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "^20.3.6",

@@ -10,8 +10,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   standalone: true,
 })
 export class HeaderComponent {
-  englishFlag = '../../../../assets/shared/en.png';
-  spanishFlag = '../../../../assets/shared/es.png';
+  englishFlag = 'assets/shared/en.png';
+  spanishFlag = 'assets/shared/es.png';
 
   themeService = inject(ThemeService);
   translate = inject(TranslateService);
