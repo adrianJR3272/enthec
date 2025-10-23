@@ -18,36 +18,41 @@
     </select>
 
     <select [(ngModel)]="languageFilterValue">
-      <option value="all">{{ "REPOSITORIES.ALL_LANGUAGES" | translate }}</option>
+      <option value="all">
+        {{ "REPOSITORIES.ALL_LANGUAGES" | translate }}
+      </option>
       <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
     </select>
   </div>
 
-  <div *ngIf="paginatedRepos().length > 0; else noResults">
+  @if (paginatedRepos().length > 0) {
     <div class="repositories-grid" [ngClass]="animationClass">
       <div class="repo-card" *ngFor="let repo of paginatedRepos()">
         <h3>{{ repo.name }}</h3>
         <p>{{ repo.description || "Sin descripción" }}</p>
         <p>Lenguaje: {{ repo.language || "N/A" }}</p>
         <p>⭐ {{ repo.stargazers_count }}</p>
-        <a [href]="repo.html_url" target="_blank">{{ "REPOSITORIES.VIEW_ON_GITHUB" | translate }}</a>
+        <a [href]="repo.html_url" target="_blank">
+          {{ "REPOSITORIES.VIEW_ON_GITHUB" | translate }}
+        </a>
       </div>
     </div>
-  </div>
 
-  <ng-template #noResults>
-    <div class="no-results">
-      {{ "REPOSITORIES.NO_REPOS_FOUND" | translate}}
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage() === 1">
+        {{ "REPOSITORIES.PAGINATION_PREV" | translate }}
+      </button>
+      <span>
+        {{ "REPOSITORIES.PAGE" | translate }} {{ currentPage() }} /
+        {{ totalPages() }}
+      </span>
+      <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+        {{ "REPOSITORIES.PAGINATION_NEXT" | translate }}
+      </button>
     </div>
-  </ng-template>
-
-  <div class="pagination" *ngIf="paginatedRepos().length > 0">
-    <button (click)="prevPage()" [disabled]="currentPage() === 1">
-      {{ "REPOSITORIES.PAGINATION_PREV" | translate }}
-    </button>
-    <span>{{ "REPOSITORIES.PAGE" | translate }} {{ currentPage() }} / {{ totalPages() }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">
-      {{ "REPOSITORIES.PAGINATION_NEXT" | translate }}
-    </button>
-  </div>
+  } @else {
+    <div class="no-results">
+      {{ "REPOSITORIES.NO_REPOS_FOUND" | translate }}
+    </div>
+  }
 </section>

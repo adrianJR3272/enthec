@@ -35,7 +35,7 @@ export class RepositoriesComponent implements OnChanges {
   languageFilterValue: 'all' | string = 'all';
   languages: string[] = [];
   animationClass: 'slide-next' | 'slide-prev' | '' = '';
-
+  isAnimating = signal(false);
   private reposService = inject(RepositoriesService);
 
   ngOnChanges(changes: SimpleChanges) {
@@ -110,15 +110,16 @@ export class RepositoriesComponent implements OnChanges {
   totalPages() {
     return Math.ceil(this.filteredRepos().length / this.pageSize);
   }
+
   nextPage() {
-    if (this.currentPage() < this.totalPages()) {
+    if (this.currentPage() < this.totalPages() && !this.isAnimating()) {
       this.triggerAnimation('next');
       this.currentPage.update((n) => n + 1);
     }
   }
 
   prevPage() {
-    if (this.currentPage() > 1) {
+    if (this.currentPage() > 1 && !this.isAnimating()) {
       this.triggerAnimation('prev');
       this.currentPage.update((n) => n - 1);
     }
@@ -126,9 +127,11 @@ export class RepositoriesComponent implements OnChanges {
 
   triggerAnimation(direction: 'next' | 'prev') {
     this.animationClass = direction === 'next' ? 'slide-next' : 'slide-prev';
+    this.isAnimating.set(true);
 
     setTimeout(() => {
       this.animationClass = '';
+      this.isAnimating.set(false);
     }, 500);
   }
 }
