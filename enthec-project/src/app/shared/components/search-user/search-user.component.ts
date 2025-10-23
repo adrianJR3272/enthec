@@ -38,20 +38,24 @@ export class SearchUserComponent implements OnInit {
   }
 
   onSearch() {
-    const username = this.searchForm.get('username')?.value?.trim();
-    if (!username) {
+    const usernameControl = this.searchForm.get('username');
+
+    if (!usernameControl?.value?.trim()) {
       this.required.set(true);
       this.userData.set(null);
+      usernameControl?.markAsTouched();
       return;
     }
 
     this.required.set(false);
     this.userData.set(null);
 
+    const username = usernameControl.value.trim();
+
     this.searchUserService.getUser(username).subscribe({
       next: (data: GitHubUser) => {
         this.userData.set(data);
-
+        this.searchForm.reset();
         this.router.navigate(['/user-detail', username], {
           state: { user: data },
         });

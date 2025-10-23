@@ -28,7 +28,9 @@
     }
   </form>
 
-  @if (searchUserService.toast()) {
+  @if (
+    searchUserService.toast() && searchUserService.toast()?.type !== "success"
+  ) {
     <app-toast
       [message]="searchUserService.toast()?.message"
       [type]="searchUserService.toast()?.type"

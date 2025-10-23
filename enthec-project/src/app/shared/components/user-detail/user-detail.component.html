@@ -1,17 +1,17 @@
 <section class="user-detail-component">
   <button class="back-button" (click)="goBack()">
-    <span class="material-symbols-outlined"> arrow_back </span
-    >{{ "SEARCH.BACK_TO_SEARCH" | translate }}
+    <span class="material-symbols-outlined">arrow_back</span>
+    {{ "SEARCH.BACK_TO_SEARCH" | translate }}
   </button>
 
   <div class="cabecera">
     <div class="avatar">
-      <img src="{{ user.avatar_url }}" />
+      <img [src]="user.avatar_url" />
     </div>
     <div class="user">
       {{ user.login }}
       @if (user.bio) {
-        <div class="description"></div>
+        <div class="description">{{ user.bio }}</div>
       }
     </div>
   </div>
@@ -19,4 +19,11 @@
   <div class="repositories-container">
     <app-repositories [userName]="user.login"></app-repositories>
   </div>
+
+  @if (searchUserService.toast()) {
+    <app-toast
+      [message]="searchUserService.toast()!.message"
+      [type]="searchUserService.toast()!.type"
+    ></app-toast>
+  }
 </section>
