@@ -1,0 +1,29 @@
+{
+  "SEARCH": {
+    "PLACEHOLDER": "Buscar usuario...",
+    "BUTTON": "Buscar",
+    "ERROR": "Por favor, ingresa un nombre de usuario para buscar.",
+    "USER_NOT_FOUND": "Usuario no encontrado",
+    "SEARCH_SUCCESS": "Búsqueda realizada con éxito",
+    "BACK_TO_SEARCH": "Volver al buscador"
+  },
+  "REPOSITORIES": {
+    "DESCRIPTION_NONE": "Sin descripción",
+    "LANGUAGE": "Lenguaje",
+    "VIEW_ON_GITHUB": "Ver en GitHub",
+    "PAGINATION_PREV": "Anterior",
+    "PAGINATION_NEXT": "Siguiente",
+    "PAGE": "Página",
+    "SEARCH_PLACEHOLDER": "Buscar repositorio...",
+    "SORT_NAME": "Ordenar por nombre",
+    "SORT_STARS": "Ordenar por estrellas",
+    "ASC": "Ascendente",
+    "DESC": "Descendente",
+    "NAME_ASC": "Ordenar por nombre ascendente",
+    "NAME_DESC": "Ordenar por nombre descendente",
+    "STARS_ASC": "Ordenar por estrellas ascendente",
+    "STARS_DESC": "Ordenar por estrellas descendente",
+    "ALL_LANGUAGES": "Todos los lenguajes",
+    "NO_REPOS_FOUND": "No se han encontrado repositorios"
+  }
+}

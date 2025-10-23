@@ -1,0 +1,29 @@
+{
+  "SEARCH": {
+    "PLACEHOLDER": "Search user...",
+    "BUTTON": "Search",
+    "ERROR": "Please enter a username to search.",
+    "USER_NOT_FOUND": "User not found",
+    "SEARCH_SUCCESS": "Search completed successfully",
+    "BACK_TO_SEARCH": "Back to search"
+  },
+  "REPOSITORIES": {
+    "DESCRIPTION_NONE": "No description",
+    "LANGUAGE": "Language",
+    "VIEW_ON_GITHUB": "View on GitHub",
+    "PAGINATION_PREV": "Previous",
+    "PAGINATION_NEXT": "Next",
+    "PAGE": "Page",
+    "SEARCH_PLACEHOLDER": "Search repository...",
+    "SORT_NAME": "Sort by name",
+    "SORT_STARS": "Sort by stars",
+    "ASC": "Ascending",
+    "DESC": "Descending",
+    "NAME_ASC": "Sort by name ascending",
+    "NAME_DESC": "Sort by name descending",
+    "STARS_ASC": "Sort by stars ascending",
+    "STARS_DESC": "Sort by stars descending",
+    "ALL_LANGUAGES": "All languages",
+    "NO_REPOS_FOUND": "No repositories found"
+  }
+}
